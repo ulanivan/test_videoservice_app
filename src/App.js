@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import {Context} from "./context";
+import {BrowserRouter as Router} from "react-router-dom";
+import {Header} from './components/Header';
+import {Footer} from './components/Footer';
+import {useRoutes} from './routes';
+import './styles/App.scss';
+import {movieItems, channelItems, genreItems} from './fakeData';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default () => {
+    const [movies, setMovies] = useState(movieItems);
+    const filterMovies = (query) => {
+        const film = movies.find(item => item.name.toLowerCase() === query.toLowerCase());
+        return film ? setMovies([].concat(film)) : setMovies(movieItems);
+    };
+    const routes = useRoutes();
+    return (
+        <Context.Provider value={{movies, genreItems, channelItems, filterMovies,}}>
+            <Router>
+                <div className="App">
+                    <Header />
+                    {routes}
+                    <Footer />
+                </div>
+            </Router>
+        </Context.Provider>
+    );
 }
-
-export default App;

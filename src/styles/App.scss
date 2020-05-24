@@ -1,0 +1,17 @@
+@import "~bootstrap/scss/bootstrap";
+@import "drop-styles";
+@import "fonts/fonts";
+@import "buttons";
+@import "components";
+@import "margins";
+@import "variables";
+@import "custom";
+@import "slider";
+@import "pages/movie-page";
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}

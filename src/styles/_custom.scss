@@ -1,0 +1,21 @@
+@import "~bootstrap/scss/bootstrap";
+
+p {
+  margin: 0;
+}
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+  color: $red;
+  border-bottom: 2px solid $red;
+}
+.nav-tabs .nav-link {
+  color: $black;
+  border: none;
+  outline: none;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1210px;
+  }
+}

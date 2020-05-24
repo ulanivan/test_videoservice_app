@@ -1,0 +1,24 @@
+@import "variables";
+.default-btn {
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  border: none;
+}
+
+.submit-comment-btn {
+  background-color: $red;
+  color: $white;
+  padding: 9px 30px 10px 30px;
+  position: absolute;
+  right: -176px;
+  top: 0;
+  &:hover {
+    background-color: $burgundy;
+  }
+
+}
