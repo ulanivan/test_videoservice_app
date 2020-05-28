@@ -1,16 +1,25 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {Context} from "../context";
 
 export const Search = () => {
     const { filterMovies } = useContext(Context);
+    const [searchValue, setSearchValue] = useState('');
 
     const findMovie = (e) => {
-        filterMovies(e.target.value)
+        if (e.keyCode === 13) {
+            filterMovies(searchValue);
+        }
     }
     return (
         <div className="search d-flex">
-            <input onChange={findMovie} placeholder={'Поиск...'} type="text" className="search_input"/>
-            <button className="search_button ml-3 rub18">Найти</button>
+            <input onKeyDown={findMovie}
+                   placeholder={'Поиск...'}
+                   type="text"
+                   className="search_input"
+                   onChange={(e) => setSearchValue(e.target.value)}
+                   value={searchValue}
+            />
+            <button onClick={() => filterMovies(searchValue)} className="search_button ml-3 rub18">Найти</button>
         </div>
     );
 };
