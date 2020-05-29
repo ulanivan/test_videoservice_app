@@ -5,7 +5,8 @@ import {AddCommentInput} from "./AddCommentInput";
 import reducer from "../../reducer";
 import _ from 'lodash';
 
-export const CommentsList = () => {
+export const CommentsList = (props) => {
+    const {id} = props.location.state;
     const [state, dispatch] = useReducer(reducer, JSON.parse(localStorage.getItem('commentsList')) || [])
     const [commentValue, setCommentValue] = useState('');
 
@@ -17,7 +18,7 @@ export const CommentsList = () => {
     }, [state])
     const unicId = _.uniqueId();
 
-    const commentListDom = state.map((item) => <CommentItem key={item.id} {...item}/>);
+    const commentListDom = state.filter(comment => comment.movieId === id).map(item => <CommentItem key={item.id} {...item} />);
 
     return (
         <Context.Provider value={{
@@ -29,6 +30,7 @@ export const CommentsList = () => {
                         <AddCommentInput setCommentValue={setCommentValue}
                                          commentValue={commentValue}
                                          id={unicId}
+                                         movieId={id}
                                          placeholder="Введите комментарий..."
                         />
                         <button className="default-btn submit-comment-btn"
@@ -36,7 +38,7 @@ export const CommentsList = () => {
                                     if (commentValue.trim().length > 0) {
                                         return dispatch({
                                             type: 'add',
-                                            payload: {id: unicId, text: commentValue}
+                                            payload: {id: unicId, text: commentValue, movieId: id}
                                         })
                                     }
                                 }}

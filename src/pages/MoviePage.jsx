@@ -38,7 +38,7 @@ export const MoviePage = (props) => {
           <h3 className="rub20-bold d-flex justify-content-center">Комментарии</h3>
           <div className="row justify-content-center flex-column align-items-center">
             <div className="comment-list col-xl-9 col-lg-8 col-12">
-              <CommentsList />
+              <CommentsList {...props}/>
             </div>
           </div>
         </div>

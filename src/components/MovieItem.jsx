@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {Link} from "react-router-dom";
 
-export const MovieItem = ({urlImg, name, description, country, genre}) => {
+export const MovieItem = ({urlImg, name, description, country, genre, id}) => {
     const movieItemImgStyle = {
         backgroundImage: `url(${urlImg})`,
         padding: '16px'
@@ -14,7 +14,7 @@ export const MovieItem = ({urlImg, name, description, country, genre}) => {
     };
     const linkTo = {
         pathname:`/movie-page/${name}`,
-        state: {urlImg, name, description, country, genre}
+        state: {urlImg, name, description, country, genre, id}
     };
 
     return (
