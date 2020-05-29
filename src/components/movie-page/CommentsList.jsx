@@ -32,10 +32,14 @@ export const CommentsList = () => {
                                          placeholder="Введите комментарий..."
                         />
                         <button className="default-btn submit-comment-btn"
-                                onClick={() => dispatch({
-                                    type: 'add',
-                                    payload: {id: unicId, text: commentValue}
-                                })}
+                                onClick={() => {
+                                    if (commentValue.trim().length > 0) {
+                                        return dispatch({
+                                            type: 'add',
+                                            payload: {id: unicId, text: commentValue}
+                                        })
+                                    }
+                                }}
                         >
                             Опубликовать
                         </button>
