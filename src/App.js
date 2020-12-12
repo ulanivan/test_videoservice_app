@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
-import {Context} from "./context";
-import {BrowserRouter as Router} from "react-router-dom";
-import {Header} from './components/Header';
-import {Footer} from './components/Footer';
-import {useRoutes} from './routes';
+import React, { useState } from 'react';
+import { Context } from "./context";
+import { BrowserRouter as Router } from "react-router-dom";
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
+import { useRoutes } from './routes';
 import './styles/App.scss';
-import {movieItems, channelItems, genreItems} from './fakeData';
+import { movieItems, channelItems, genreItems } from './fakeData';
 
 export default () => {
     const [movies, setMovies] = useState(movieItems);
@@ -15,11 +15,11 @@ export default () => {
     };
     const routes = useRoutes();
     return (
-        <Context.Provider value={{movies, genreItems, channelItems, filterMovies,}}>
+        <Context.Provider value={{ movies, genreItems, channelItems, filterMovies }}>
             <Router>
                 <div className="App">
                     <Header />
-                    {routes}
+                    { routes }
                     <Footer />
                 </div>
             </Router>

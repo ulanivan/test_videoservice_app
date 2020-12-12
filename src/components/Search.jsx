@@ -1,25 +1,23 @@
 import React, { useContext, useState } from "react";
-import {Context} from "../context";
+import { Context } from "../context";
 
 export const Search = () => {
     const { filterMovies } = useContext(Context);
     const [searchValue, setSearchValue] = useState('');
 
-    const findMovie = (e) => {
-        if (e.keyCode === 13) {
-            filterMovies(searchValue);
-        }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        filterMovies(searchValue);
     }
     return (
-        <div className="search d-flex">
-            <input onKeyDown={findMovie}
-                   placeholder={'Поиск...'}
+        <form onSubmit={handleSubmit} className="search d-flex">
+            <input placeholder={'Поиск...'}
                    type="text"
                    className="search_input"
                    onChange={(e) => setSearchValue(e.target.value)}
                    value={searchValue}
             />
-            <button onClick={() => filterMovies(searchValue)} className="search_button ml-3 rub18">Найти</button>
-        </div>
+            <button type="submit" className="search_button ml-3 rub18">Найти</button>
+        </form>
     );
 };

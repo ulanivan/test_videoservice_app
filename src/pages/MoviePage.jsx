@@ -1,9 +1,9 @@
 import React from "react";
-import {Link} from "react-router-dom";
-import {CommentsList} from "../components/movie-page/CommentsList";
+import { Link } from "react-router-dom";
+import { CommentsList } from "../components/movie-page/CommentsList";
 
 export const MoviePage = (props) => {
-    const {urlImg, name, description, country, genre} = props.location.state;
+    const { urlImg, name, description, country, genre } = props.location.state;
     return (
       <div className="container">
         <div className="movie-description mb-5 row justify-content-center">
@@ -20,18 +20,18 @@ export const MoviePage = (props) => {
             <div className="movie-description_info d-flex">
                 <div>
                     <div className="rub16">Название:</div>
-                    {country && <div className="rub16 mt-2">Страна:</div>}
-                    {genre && <div className="rub16 mt-2">Жанр:</div>}
+                    { country && <div className="rub16 mt-2">Страна:</div> }
+                    { genre && <div className="rub16 mt-2">Жанр:</div> }
                 </div>
                 <div className="ml-5">
-                    <div className="rub20-bold">{name}</div>
-                    <div className="rub20 mt-2">{country}</div>
-                    <div className="rub20 mt-2">{genre}</div>
+                    <div className="rub20-bold">{ name }</div>
+                    <div className="rub20 mt-2">{ country }</div>
+                    <div className="rub20 mt-2">{ genre }</div>
                 </div>
             </div>
-              <div className="movie-description_description mt-4">
-                  {description}
-              </div>
+            <div className="movie-description_description mt-4">
+                { description }
+            </div>
           </div>
         </div>
         <div className="comments-block">
@@ -43,6 +43,5 @@ export const MoviePage = (props) => {
           </div>
         </div>
       </div>
-
     );
 };

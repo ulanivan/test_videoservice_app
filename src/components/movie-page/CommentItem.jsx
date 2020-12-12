@@ -1,7 +1,9 @@
-import React, {useState, useContext, useEffect} from "react";
-import {Context} from "../../context";
+import React, { useContext } from "react";
+import { Context } from "../../context";
 
 export const CommentItem = ({id, userComment, nickname, text}) => {
+    const { dispatch } = useContext(Context);
+
     const deleteIconStyle = {
         position: "absolute",
         right: '-28px',
@@ -11,7 +13,10 @@ export const CommentItem = ({id, userComment, nickname, text}) => {
         cursor: 'pointer'
     };
 
-    const { dispatch } = useContext(Context);
+    const removeComment = (commentId) => {
+        dispatch({ type: 'REMOVE_COMMENT', payload: { id: commentId } });
+    };
+
     return (
         <div className="comment-item mb-3">
             <div className="comment-item_nickname rub16-bold">
@@ -22,7 +27,7 @@ export const CommentItem = ({id, userComment, nickname, text}) => {
                        className="comment-item_nickname_input"
                        onChange={(e) => {
                            dispatch({
-                               type: 'editName',
+                               type: 'EDIT_NAME',
                                payload: {id, newName: e.target.value}
                            })
                        }}
@@ -32,11 +37,9 @@ export const CommentItem = ({id, userComment, nickname, text}) => {
                 <p>{text}</p>
             </div>
             {userComment && <img style={deleteIconStyle}
-                                src="/icons/delete-icon.jpg" alt="Удалить комментарий"
-                                onClick={() => dispatch({
-                                    type: 'remove',
-                                    payload: {id}
-                                })}
+                                src="/icons/delete-icon.jpg"
+                                alt="Удалить комментарий"
+                                onClick={() => removeComment(id)}
             />}
         </div>
     );

@@ -1,6 +1,6 @@
 import React from "react";
 
-export const GenreItem = ({imgPath, name, gradient}) => {
+export const GenreItem = ({ imgPath, name, gradient }) => {
     const genreItemStyle = {
         borderRadius: '6px',
         position: 'relative',
@@ -14,7 +14,7 @@ export const GenreItem = ({imgPath, name, gradient}) => {
     return (
         <div className="genre-item d-flex justify-content-center align-items-center" style={genreItemStyle}>
             <img src={imgPath} alt="" />
-            <span style={genreItemNameStyle}>{name}</span>
+            <span style={genreItemNameStyle}>{ name }</span>
         </div>
     );
 };
