@@ -30,6 +30,7 @@ export const CommentsList = () => {
                         <AddCommentForm  setCommentValue={setCommentValue}
                                          commentValue={commentValue}
                                          id={unicId}
+                                         movieId={unicId}
                                          placeholder="Введите комментарий..."
                         />
                     </div>
